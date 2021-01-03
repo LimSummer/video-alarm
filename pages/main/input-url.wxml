@@ -1,0 +1,12 @@
+<!--pages/main/input-url.wxml-->
+<view class="page-section">
+  <view class="weui-cells__title">频率URL</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <input class="weui-input" auto-focus placeholder="请输入抖音首页URL" model:value="{{url}}"/>
+    </view>
+  </view>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="confirm">确定</button>
+</view>

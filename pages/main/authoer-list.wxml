@@ -1,0 +1,31 @@
+<!--pages/main/authoer-list.wxml-->
+<wxs module="m">
+  function navigateTo(event,ownerInstance) {
+    console.log(JSON.stringify(event));
+  }
+  module.exports = {
+    navigateTo: navigateTo
+  }
+</wxs>
+<view>
+    <view class="header">
+      <view class="flex-item">
+        <view class="userinfo">
+          <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
+          <view class="userinfo-nickname">{{ userInfo.nickName}}</view>
+        </view>
+      </view>
+      <view class="flex-item" style="text-align:center;"><text class="info" style="text-align:center;"></text></view>
+      <view class="flex-item" style="text-align:right;">
+        <mp-icon icon="add2" color="black" size="{{30}}" bindtap="navigatetoInputUrl">add</mp-icon>
+      </view>
+    </view>
+    <view class="list-body">
+      <view class="account-item" wx:for="{{accountlist}}">
+        <view>
+          <image src="{{item.imageUrl}}" mode="scaleToFill" class="img-c1"></image>
+        </view>
+        <view class="account-name">{{item.accountName}}</view>
+      </view>
+    </view>
+  </view>

@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/main/authoer-list",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/main/input-url"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "视频闹钟",
+    "navigationBarTextStyle": "black"
+  },
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
