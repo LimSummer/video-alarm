@@ -68,7 +68,7 @@ Page({
     console.log(this.data.url);
     const eventChannel = this.getOpenerEventChannel();
     console.log(eventChannel);
-    eventChannel.emit('onFetchDyAccount', {data: 'test'});
+    eventChannel.emit('onFetchDyAccount', { data: this.data.url } );
     wx.navigateBack({
       delta: 0,
       success: res => {

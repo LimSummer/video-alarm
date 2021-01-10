@@ -118,17 +118,29 @@ Page({
       url: 'input-url',
       events: {
         onFetchDyAccount: function(e) {
-          console.log(_this);
-          let accoutList = _this.data.accountlist;
-          accoutList.push(
-            {
-              accountName: "怀旧历史影像馆",
-              imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
+          console.log(e);
+          let url = e.data;
+          let request_url = app.globalData.tcloudUrl + "/dy-api/account-by-url?url=" + url;
+          console.log(request_url);
+          wx.request({
+            url: request_url,
+            success: res => {
+              console.log(res);
+              let accoutList = _this.data.accountlist;
+              accoutList.push(
+                {
+                  accountName: res.data.data.accountName,
+                  imageUrl: res.data.data.imgUrl
+                }
+              );
+              _this.setData({
+                accountlist: accoutList
+              });
+            },
+            fail: res => {
+               console.log(res);
             }
-          );
-          _this.setData({
-            accountlist: accoutList
-          });
+          })
         }
       }
     });
