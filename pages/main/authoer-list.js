@@ -11,22 +11,22 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     accountlist: [
-      {
-        accountName: "怀旧历史影像馆",
-        imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
-      },
-      {
-        accountName: "怀旧历史影像馆",
-        imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
-      },
-      {
-        accountName: "怀旧历史影像馆",
-        imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
-      },
-      {
-        accountName: "怀旧历史影像馆",
-        imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
-      }
+      // {
+      //   accountName: "怀旧历史影像馆",
+      //   imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
+      // },
+      // {
+      //   accountName: "怀旧历史影像馆",
+      //   imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
+      // },
+      // {
+      //   accountName: "怀旧历史影像馆",
+      //   imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
+      // },
+      // {
+      //   accountName: "怀旧历史影像馆",
+      //   imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
+      // }
     ]
   },
 
@@ -122,8 +122,13 @@ Page({
           let url = e.data;
           let request_url = app.globalData.tcloudUrl + "/dy-api/account-by-url?url=" + url;
           console.log(request_url);
+          let cookie = wx.getStorageSync('cookieKey');
           wx.request({
             url: request_url,
+            header: {
+              'Content-Type' : 'application/json;charset=UTF-8',
+              'Cookie' : cookie
+            },
             success: res => {
               console.log(res);
               let accoutList = _this.data.accountlist;

@@ -15,7 +15,10 @@ App({
         wx.request({
           url: url_code,
           success: res => {
-              console.log(res);
+            if (res && res.header && res.header['Set-Cookie']) {
+              wx.setStorageSync('cookieKey', res.header['Set-Cookie']);   //保存Cookie到Storage
+            }
+            let cookie = wx.getStorageSync('cookieKey');
           },
           fail: res => {
              console.log(res);
