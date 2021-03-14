@@ -14,18 +14,6 @@ Page({
       // {
       //   accountName: "怀旧历史影像馆",
       //   imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
-      // },
-      // {
-      //   accountName: "怀旧历史影像馆",
-      //   imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
-      // },
-      // {
-      //   accountName: "怀旧历史影像馆",
-      //   imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
-      // },
-      // {
-      //   accountName: "怀旧历史影像馆",
-      //   imageUrl: "https://p3-dy-ipv6.byteimg.com/img/tos-cn-i-0813/697c778a7f5f477e8d57be9712c3ba31~c5_720x720.jpeg?from=4010531038"
       // }
     ]
   },
@@ -73,7 +61,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let request_url = app.globalData.tcloudUrl + "/dy-api/accounts";
+    let cookie = wx.getStorageSync('cookieKey');
+    wx.request({
+      url: request_url,
+      header: {
+        'Content-Type' : 'application/json;charset=UTF-8',
+        'Cookie' : cookie
+      },
+      success: res => {
+        console.log(res);
+        // let accoutList = _this.data.accountlist;
+        // accoutList.push(
+        //   {
+        //     accountName: res.data.data.accountName,
+        //     imageUrl: res.data.data.imgUrl
+        //   }
+        // );
+        this.setData({
+          accountlist: res.data.data
+        });
+      },
+      fail: res => {
+         console.log(res);
+      }
+    })
   },
 
   /**
